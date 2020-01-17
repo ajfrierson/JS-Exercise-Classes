@@ -93,7 +93,7 @@ class Car {
     this.odometer += distance;
     this.tank -= (distance/this.milesPerGallon);
     if(this.tank = 0){
-      return `I ran out of fuel at ${this.odometer} miles! `
+      return 'I ran out of fuel at' + this.odometer + ' miles!'
     }
   }
 }
@@ -147,6 +147,10 @@ class Instructor extends Lambdasian {
   demo(subject){
     return 'Today we are learning about ' + subject;
   }
+
+  grade(student, subject){
+    return student.name + ' receives a perfect score on ' + subject;
+  }
 }
 
 /*
@@ -164,8 +168,26 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Lambdasian{
+  constructor(object){
+    super(object);
+    this.previousBackground = object.previousBackground;
+    this.className = object.className;
+    this.favSubjects = object.favSubjects;
 
+  }
+
+  listSubjects() {
+    return 'Loving ' + this.favSubjects;
+  }
+
+  PRAssignment(subject){
+    return this.name + 'has submitted a PR for ' + subject;
+  }
+
+  sprintChallenge(student, subject){
+    return student.name + 'has begun sprint challenge on ' + subject;
+  }
 }
 
 /*
